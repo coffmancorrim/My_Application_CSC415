@@ -9,7 +9,7 @@
     <color name="light_grey">#F1F1F1</color>
     <color name="dark_grey">#929292</color>
     <color name="animal_green">#82CF8A</color>
-    <color name="animal_red">#E0DE72</color>
+    <color name="animal_yellow">#E0DE72</color>
     <color name="animal_blue">#729EE0</color>
     <color name="animal_green_dark">#68A76F</color>
 </resources>

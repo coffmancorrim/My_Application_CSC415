@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.example.MyApplicationCSC415.MainActivity
 import com.example.MyApplicationCSC415.R
 
 
@@ -20,7 +18,6 @@ class AnimalDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_animal_detail, container, false)
 
         if (arguments != null) {
@@ -35,30 +32,40 @@ class AnimalDetailFragment : Fragment() {
             val lifeSpan = requireArguments().getInt("lifeSpan")
             val features = requireArguments().getStringArrayList("features")
 
-
-            view.findViewById<TextView>(R.id.animal_species).text = species
-            view.findViewById<TextView>(R.id.animal_type).text = type.toString()
-            view.findViewById<TextView>(R.id.animal_fact).text = "Animal Fact: " + fact
             Glide
                 .with(view.context)
                 .load(image)
                 .into(view.findViewById(R.id.animal_image))
-            view.findViewById<TextView>(R.id.animal_weight).text = "Weight: " + weight.toString()
-            view.findViewById<TextView>(R.id.animal_size).text = "Size: " + size.toString()
-            view.findViewById<TextView>(R.id.animal_habitat).text = "Habitat: " + habitat
 
-            view.findViewById<TextView>(R.id.animal_eating_type).text = "Eating Type: " + eatingType
+            view.findViewById<TextView>(R.id.animal_species).text = species
+            view.findViewById<TextView>(R.id.animal_type).text = type.toString()
+            view.findViewById<TextView>(R.id.animal_fact).text =
+                view.context.getString(R.string.animal_fact_placeholder, fact)
+            view.findViewById<TextView>(R.id.animal_weight).text =
+                view.context.getString(R.string.animal_weight_placeholder, weight)
+            view.findViewById<TextView>(R.id.animal_size).text =
+                view.context.getString(R.string.animal_size_placeholder, size)
+            view.findViewById<TextView>(R.id.animal_habitat).text =
+                view.context.getString(R.string.animal_habitat_placeholder, habitat)
+            view.findViewById<TextView>(R.id.animal_eating_type).text =
+                view.context.getString(R.string.animal_eating_type_placeholder, eatingType)
             view.findViewById<TextView>(R.id.animal_lifespan).text =
-                "Lifespan: " + lifeSpan.toString()
-            view.findViewById<TextView>(R.id.animal_endangered).text = "Features: " + features
+                view.context.getString(R.string.animal_lifespan_placeholder, lifeSpan)
+            view.findViewById<TextView>(R.id.animal_endangered).text = view.context.getString(
+                R.string.animal_features_placeholder,
+                features?.get(0) ?: "none",
+                features?.get(1) ?: "none",
+                features?.get(2) ?: "none",
+                features?.get(3) ?: "none"
+            )
 
-            var constraintLayout = view.findViewById<ViewGroup>(R.id.bubble)
+            val constraintLayout = view.findViewById<ViewGroup>(R.id.bubble)
 
             if (type == "bird")
                 constraintLayout.setBackgroundColor(
                     ContextCompat.getColor(
                         constraintLayout.context,
-                        R.color.animal_red
+                        R.color.animal_yellow
                     )
                 )
             else if (type == "fish")

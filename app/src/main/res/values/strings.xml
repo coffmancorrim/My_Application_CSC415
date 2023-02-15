@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MyApplicationCSC415</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="dolphin_fact">Dolphins deliberately handle pufferfish causing them to release toxins as a defence mechanism. These toxins can be deadly in high doses, but also have a narcotic effect – and are a powerful hallucinogenic, which dolphins appear to enjoy(factanimal.com).</string>
     <string name="pistol_shrimp_Fact">The Pistol Shrimp is capable of snapping its claw shut so rapidly, that it creates a bubble which collapses to produce a sonic blast. The shock wave can reach 230 decibels, also louder than the sound of a gunshot(factanimal.com).</string>
     <string name="garden_snail_fact">A common garden snail has 14,000 teeth. Their microscoptic teeth are called radula, and some species actually have over 20,000 teeth(animalfact.com)</string>
@@ -11,6 +10,11 @@
     <string name="shoebill_stork_fact">The shoebill stork can swallow baby crocodiles whole.</string>
     <string name="syrian_brown_bear">A syrian brown bear named Wojtek was brought by polish shoulders while in Iran. He was made an officer so that he was allowed rations and eventually was promoted to corporal. He helped out by carrying boxes of ammunition(animalfact.com).</string>
     <string name="horned_lizard_fact">To scare of predators, this lizard shoots blood out of its eyes(animalfact.com).</string>
-    <!-- TODO: Remove or change this placeholder text -->
-
+    <string name="animal_fact_placeholder">Animal Fact: %1$s</string>
+    <string name="animal_weight_placeholder">Weight: %1$d pounds</string>
+    <string name="animal_size_placeholder">Size: %1$d feet</string>
+    <string name="animal_habitat_placeholder">Habitat: %1$s</string>
+    <string name="animal_eating_type_placeholder">Eating Type: %1$s</string>
+    <string name="animal_lifespan_placeholder">Lifespan: %1$d</string>
+    <string name="animal_features_placeholder">Features: %1$s, %2$s, %3$s, %4$s</string>
 </resources>

@@ -62,16 +62,18 @@ class AnimalAdapter(private val animals: List<Animal>) :
 
         holder.animalSpecies.text = animal.species
         holder.animalType.text = animal.type
-
-        holder.animalFact.text = "Animal Fact: " + animal.fact
-        holder.animalWeight.text = "Weight: " + animal.weight.toString() + " pounds"
-        holder.animalSize.text = "Size: " + animal.size.toString() + " feet"
+        holder.animalFact.text =
+            holder.itemView.context.getString(R.string.animal_fact_placeholder, animal.fact)
+        holder.animalWeight.text =
+            holder.itemView.context.getString(R.string.animal_weight_placeholder, animal.weight)
+        holder.animalSize.text =
+            holder.itemView.context.getString(R.string.animal_size_placeholder, animal.size)
 
         if (animal.type == "bird")
             holder.animalType.setBackgroundColor(
                 ContextCompat.getColor(
                     holder.animalType.context,
-                    R.color.animal_red
+                    R.color.animal_yellow
                 )
             )
         else if (animal.type == "fish")
@@ -89,7 +91,6 @@ class AnimalAdapter(private val animals: List<Animal>) :
                 )
             )
     }
-
     inner class AnimalViewHolder(
         itemView: View,
         private val onItemClick: (adapterPosition: Int) -> Unit

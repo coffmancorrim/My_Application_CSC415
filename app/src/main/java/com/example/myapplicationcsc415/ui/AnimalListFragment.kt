@@ -19,15 +19,12 @@ class AnimalListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_animal_list, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.animal_recycler_view)
-
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         val animals = mutableListOf<Animal>()
 
-        var speciesList = listOf<String>(
+        val speciesList = listOf<String>(
             "Dolphin",
             "Pistol Shrimp",
             "Garden Snail",
@@ -39,12 +36,12 @@ class AnimalListFragment : Fragment() {
             "Syrian Brown Bear",
             "Horned Lizard"
         )
-        var typeList = listOf<String>(
+        val typeList = listOf<String>(
             "mammal",
             "bird",
             "fish"
         )
-        var factList = listOf<Int>(
+        val factList = listOf<Int>(
             R.string.dolphin_fact,
             R.string.pistol_shrimp_Fact,
             R.string.garden_snail_fact,
@@ -99,16 +96,6 @@ class AnimalListFragment : Fragment() {
             "https://drive.google.com/uc?id=1GPDmlyJa9ugFe063dyBXKi1LlVRMj1VU"
         )
 
-        val genders = mutableListOf("Male", "Female", "Pickle", "Squanch", "01010")
-        val characterLocations = mutableListOf(
-            "Earth",
-            "Citadel of Ricks",
-            "Interdimensional Cable",
-            "Random Dimension"
-        )
-        val nameMods = mutableListOf("Pickle", "", "Smart", "Fused", "Big Arm")
-        val characterNames = mutableListOf("Rick", "Morty", "Summer", "Jerry", "Beth")
-        // val imageIterator: Iterator<String> = imageList.iterator()
 
         for (i in 0..30) {
             animals.add(
