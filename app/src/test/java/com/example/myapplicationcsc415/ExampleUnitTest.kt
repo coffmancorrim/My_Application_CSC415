@@ -1,4 +1,4 @@
-package com.example.myapplicationcsc415
+package com.example.MyApplicationCSC415
 
 import org.junit.Test
 

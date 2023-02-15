@@ -8,8 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_grey">#F1F1F1</color>
+    <color name="dark_grey">#929292</color>
     <color name="animal_green">#82CF8A</color>
-    <color name="animal_red">#FF8585</color>
-    <color name="animal_blue">#A7C4FD</color>
-    <color name="animal_green_dark">#1EAF7C</color>
+    <color name="animal_red">#E0DE72</color>
+    <color name="animal_blue">#729EE0</color>
+    <color name="animal_yellow">#E0CE72</color>
+    <color name="animal_green_dark">#68A76F</color>
 </resources>
