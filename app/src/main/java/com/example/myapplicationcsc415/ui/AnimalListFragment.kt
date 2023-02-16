@@ -80,7 +80,12 @@ class AnimalListFragment : Fragment() {
             "opposable thumbs",
             "cold blooded",
             "skin",
-            "poisonous"
+            "poisonous",
+            "warm blooded",
+            "long neck",
+            "big ears",
+            "scaly skin",
+            "breaths water"
         )
 
         val imageList = listOf<String>(
@@ -100,7 +105,6 @@ class AnimalListFragment : Fragment() {
         for (i in 0..30) {
             animals.add(
                 createAnimal(
-//                    "${nameMods.random()} ${speciesList.random()}".trimStart(),
                     speciesList.random(),
                     typeList.random(),
                     getString(factList.random()),
