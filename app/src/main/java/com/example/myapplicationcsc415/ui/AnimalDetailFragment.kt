@@ -1,24 +1,28 @@
-package com.example.MyApplicationCSC415.ui
+package com.example.myapplicationcsc415.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.example.MyApplicationCSC415.R
+import com.example.myapplicationcsc415.R
+import com.example.myapplicationcsc415.databinding.FragmentAnimalDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class AnimalDetailFragment : Fragment() {
+
+    private var _binding: FragmentAnimalDetailBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_animal_detail, container, false)
+        _binding = FragmentAnimalDetailBinding.inflate(inflater, container, false)
 
         if (arguments != null) {
             val species = requireArguments().getString("species")
@@ -33,25 +37,26 @@ class AnimalDetailFragment : Fragment() {
             val features = requireArguments().getStringArrayList("features")
 
             Glide
-                .with(view.context)
+                .with(binding.root)
                 .load(image)
-                .into(view.findViewById(R.id.animal_image))
+                .into(binding.animalImage)
 
-            view.findViewById<TextView>(R.id.animal_species).text = species
-            view.findViewById<TextView>(R.id.animal_type).text = type.toString()
-            view.findViewById<TextView>(R.id.animal_fact).text =
-                view.context.getString(R.string.animal_fact_placeholder, fact)
-            view.findViewById<TextView>(R.id.animal_weight).text =
-                view.context.getString(R.string.animal_weight_placeholder, weight)
-            view.findViewById<TextView>(R.id.animal_size).text =
-                view.context.getString(R.string.animal_size_placeholder, size)
-            view.findViewById<TextView>(R.id.animal_habitat).text =
-                view.context.getString(R.string.animal_habitat_placeholder, habitat)
-            view.findViewById<TextView>(R.id.animal_eating_type).text =
-                view.context.getString(R.string.animal_eating_type_placeholder, eatingType)
-            view.findViewById<TextView>(R.id.animal_lifespan).text =
-                view.context.getString(R.string.animal_lifespan_placeholder, lifeSpan)
-            view.findViewById<TextView>(R.id.animal_endangered).text = view.context.getString(
+
+            binding.animalSpecies.text = species
+            binding.animalType.text = type.toString()
+            binding.animalFact.text =
+                binding.root.context.getString(R.string.animal_fact_placeholder, fact)
+            binding.animalWeight.text =
+                binding.root.context.getString(R.string.animal_weight_placeholder, weight)
+            binding.animalSize.text =
+                binding.root.context.getString(R.string.animal_size_placeholder, size)
+            binding.animalHabitat.text =
+                binding.root.context.getString(R.string.animal_habitat_placeholder, habitat)
+            binding.animalEatingType.text =
+                binding.root.context.getString(R.string.animal_eating_type_placeholder, eatingType)
+            binding.animalLifespan.text =
+                binding.root.context.getString(R.string.animal_lifespan_placeholder, lifeSpan)
+            binding.animalEndangered.text = binding.root.context.getString(
                 R.string.animal_features_placeholder,
                 features?.get(0) ?: "none",
                 features?.get(1) ?: "none",
@@ -59,7 +64,7 @@ class AnimalDetailFragment : Fragment() {
                 features?.get(3) ?: "none"
             )
 
-            val constraintLayout = view.findViewById<ViewGroup>(R.id.bubble)
+            val constraintLayout = binding.bubble
 
             if (type == "bird")
                 constraintLayout.setBackgroundColor(
@@ -84,6 +89,6 @@ class AnimalDetailFragment : Fragment() {
                 )
         }
 
-        return view
+        return binding.root
     }
 }

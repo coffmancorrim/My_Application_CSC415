@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyApplicationCSC415</string>
+    <string name="app_name">AnimalFactApplication</string>
     <string name="dolphin_fact">Dolphins deliberately handle pufferfish causing them to release toxins as a defence mechanism. These toxins can be deadly in high doses, but also have a narcotic effect – and are a powerful hallucinogenic, which dolphins appear to enjoy(factanimal.com).</string>
     <string name="pistol_shrimp_Fact">The Pistol Shrimp is capable of snapping its claw shut so rapidly, that it creates a bubble which collapses to produce a sonic blast. The shock wave can reach 230 decibels, also louder than the sound of a gunshot(factanimal.com).</string>
     <string name="garden_snail_fact">A common garden snail has 14,000 teeth. Their microscoptic teeth are called radula, and some species actually have over 20,000 teeth(animalfact.com)</string>

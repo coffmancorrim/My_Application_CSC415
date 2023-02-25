@@ -1,4 +1,4 @@
-package com.example.MyApplicationCSC415
+package com.example.myapplicationcsc415.model
 
 data class Animal(
     val species: String,

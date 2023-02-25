@@ -1,27 +1,36 @@
-package com.example.MyApplicationCSC415.ui
+package com.example.myapplicationcsc415.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.MyApplicationCSC415.Animal
-import com.example.MyApplicationCSC415.AnimalAdapter
-import com.example.MyApplicationCSC415.R
+import com.example.myapplicationcsc415.R
+import com.example.myapplicationcsc415.databinding.FragmentAnimalListBinding
+import com.example.myapplicationcsc415.model.Animal
+import com.example.myapplicationcsc415.ui.adapter.AnimalAdapter
+
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.random.Random
 
+@AndroidEntryPoint
 class AnimalListFragment : Fragment() {
+
+    private var _binding: FragmentAnimalListBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_animal_list, container, false)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.animal_recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        _binding = FragmentAnimalListBinding.inflate(inflater, container, false)
+
+        binding.animalRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
         val animals = mutableListOf<Animal>()
 
         val speciesList = listOf<String>(
@@ -124,10 +133,39 @@ class AnimalListFragment : Fragment() {
             )
         }
 
-        val adapter = AnimalAdapter(animals)
-        recyclerView.adapter = adapter
+        val adapter = AnimalAdapter(animals) {position ->
+            val animal = animals[position]
 
-        return view
+            val bundle = bundleOf(
+                "species" to animal.species,
+                "type" to animal.type,
+                "fact" to animal.fact,
+                "image" to animal.image,
+                "weight" to animal.weight,
+                "size" to animal.size,
+                "habitat" to animal.habitat,
+                "eatingType" to animal.eatingType,
+                "lifeSpan" to animal.lifeSpan,
+                "features" to animal.features
+            )
+
+            val detailFragment = AnimalDetailFragment()
+            detailFragment.arguments = bundle
+
+            requireActivity().supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace(R.id.fragment_container_view, detailFragment)
+                addToBackStack(null)
+            }
+        }
+        binding.animalRecyclerView.adapter = adapter
+
+        return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     private fun createAnimal(
